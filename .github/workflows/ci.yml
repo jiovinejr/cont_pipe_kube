@@ -29,7 +29,12 @@ jobs:
           pip install -r requirements.txt
 
       - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV  
+        run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+        
+      - name: Run linting (flake8)
+        run: |
+          pip install flake8
+          flake8 src/ --max-line-length=88
 
       - name: Run unit tests (pytest)
         run: |
