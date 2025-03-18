@@ -1,5 +1,6 @@
 import requests
 
+
 def fetch_pokemon():
     url = 'https://pokeapi.co/api/v2/pokemon'
     response = requests.get(url)
