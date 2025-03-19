@@ -1,6 +1,4 @@
 {
-    "python.terminal.executeInFileDir": true,
-    "code-runner.executorMap": {
-        "python": "python -m src.main"
-}
+  "python.terminal.executeInFileDir": false,
+  "python.terminal.cwd": "c:/Users/jiovi/workspace/ContainerPipelineKube/cont_pipe_kube"
 }
