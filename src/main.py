@@ -1,18 +1,20 @@
-import sys
 import os
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
+from flask import Flask, jsonify
 from src.api import fetch_pokemon
 
+app = Flask(__name__)
 
-def main():
+@app.route("/")
+def index():
     data = fetch_pokemon()
     if data:
-        print("First Pokémon:", data["results"][0]["name"])
+        return jsonify({
+            "first_pokemon": data["results"][0]["name"]
+        })
     else:
-        print("Failed to fetch Pokémon data.")
-
+        return jsonify({"error": "Failed to fetch Pokémon data"}), 500
 
 if __name__ == "__main__":
-    main()
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
+
